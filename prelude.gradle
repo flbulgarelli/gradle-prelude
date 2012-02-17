@@ -1,0 +1,33 @@
+initscript { 
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+  dependencies {
+    classpath group: 'com.zauberlabs.gradle.plugins', name: 'gradle-classpath-plugin', version: '1.0-SNAPSHOT'
+  }
+}
+
+allprojects {
+ buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+  }
+  
+  apply plugin: com.zauberlabs.gradle.plugins.classpath.ClasspathPlugin 
+  
+  task 'create-standard-dirs' << {
+   sourceSets.all*.java.srcDirs*.each { it.mkdirs() }
+   sourceSets.all*.groovy.srcDirs*.each { it.mkdirs() }
+   sourceSets.all*.resources.srcDirs*.each { it.mkdirs() }
+  }
+
+  delegate.metaClass.include = { snippet ->
+    project.apply(from: "classpath://${snippet}.gradle")
+  }
+}
+
+
+
