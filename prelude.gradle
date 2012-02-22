@@ -24,7 +24,7 @@ allprojects {
    sourceSets.all*.resources.srcDirs*.each { it.mkdirs() }
   }
 
-  delegate.metaClass.include = { snippet ->
+  delegate.metaClass.require = { snippet ->
     project.apply(from: "classpath://${snippet}.gradle")
   }
 }
