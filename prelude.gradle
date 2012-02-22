@@ -5,6 +5,7 @@ initscript {
   }
   dependencies {
     classpath group: 'com.zauberlabs.gradle.plugins', name: 'gradle-classpath-plugin', version: '1.0-SNAPSHOT'
+    classpath group: 'com.zauberlabs.gradle.plugins', name: 'gradle-shadow-plugin', version: '1.0-SNAPSHOT'
   }
 }
 
@@ -17,6 +18,7 @@ allprojects {
   }
   
   apply plugin: com.zauberlabs.gradle.plugins.classpath.ClasspathPlugin 
+  apply plugin: com.zauberlabs.gradle.plugins.shadow.ShadowPlugin
   
   task 'create-standard-dirs' << {
    sourceSets.all*.java.srcDirs*.each { it.mkdirs() }
