@@ -4,7 +4,7 @@ initscript {
     mavenCentral()
   }
   dependencies {
-    classpath group: 'com.zauberlabs.gradle.plugins', name: 'gradle-classpath-plugin', version: '1.0-SNAPSHOT'
+    classpath group: 'com.zauberlabs.gradle.plugins', name: 'gradle-classpath-plugin', version: '1.0'
   }
 }
 
