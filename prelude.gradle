@@ -1,6 +1,5 @@
 initscript { 
   repositories {
-    mavenLocal()
     mavenCentral()
   }
   dependencies {
@@ -12,7 +11,6 @@ initscript {
 allprojects {
  buildscript {
     repositories {
-        mavenLocal()
         mavenCentral()
     }
   }
