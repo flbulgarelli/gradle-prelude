@@ -22,12 +22,6 @@ initscript {
 }
 
 allprojects {
- buildscript {
-    repositories {
-        mavenCentral()
-    }
-  }
-  
   apply plugin: com.zauberlabs.gradle.plugins.classpath.ClasspathPlugin 
   apply plugin: com.zauberlabs.gradle.plugins.shadow.ShadowPlugin
   
