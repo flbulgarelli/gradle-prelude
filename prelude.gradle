@@ -1,10 +1,23 @@
+/* Gradle Prelude
+ * A set of common, cross-project, project-agnostic configurations, that
+ * are essential for any real-life build.
+ * 
+ * It provides the following:
+ * <ul>
+ *  <li>Task for encrypting passwords</li>
+ *  <li>Task for creating project dirs</li>
+ *  <li>Directives for mixin snippets distributed through standard repositories</li>
+ * </ul>
+ */
+
 initscript { 
   repositories {
     mavenCentral()
   }
   dependencies {
-    classpath group: 'com.zauberlabs.gradle.plugins', name: 'gradle-classpath-plugin', version: '1.0-SNAPSHOT'
-    classpath group: 'com.zauberlabs.gradle.plugins', name: 'gradle-shadow-plugin', version: '1.0-SNAPSHOT'
+    classpath 'com.zauberlabs.gradle.plugins:gradle-classpath-plugin:1.0-SNAPSHOT'
+    classpath 'com.zauberlabs.gradle.plugins:gradle-shadow-plugin:1.0-SNAPSHOT'
+    classpath 'org.sonatype.plexus:plexus-cipher:1.7'
   }
 }
 
@@ -25,7 +38,7 @@ allprojects {
   }
 
   delegate.metaClass.require = { snippet ->
-    project.apply(from: "classpath://${snippet}.gradle")
+    project.apply from: "classpath://${snippet}.gradle"
   }
 }
 
